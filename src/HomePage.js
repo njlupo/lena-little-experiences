@@ -332,37 +332,45 @@ const HomePage = ({ setView, setBooking, booking, setBookingStep }) => {
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="bg-slate-900 px-4 md:px-6 py-20 text-center">
-        <div className="max-w-2xl mx-auto border-t border-slate-800 pt-12">
-          <p className="text-slate-500 font-black uppercase tracking-[0.3em] text-[10px] mb-8">Ready for the best day ever?</p>
+{/* Footer */}
+<footer className="bg-slate-900 px-4 md:px-6 py-12 md:py-20 text-center">
+        <div className="max-w-2xl mx-auto border-t border-slate-800 pt-8 md:pt-12">
+          <p className="text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[9px] md:text-[10px] mb-6 md:mb-8">
+            Ready for the best day ever?
+          </p>
           
-          <div className="space-y-6 mb-10">
-            <a href={`mailto:${contactInfo.email}`} className="flex items-center justify-center gap-3 text-2xl md:text-4xl font-black text-white hover:text-[#e599a7] transition-all">
-              <Mail size={32} className="md:w-10 md:h-10" />
-              <span className="break-all">{contactInfo.email}</span>
+          <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
+            <a 
+              href={`mailto:${contactInfo.email}`} 
+              className="flex items-center justify-center gap-2 md:gap-3 text-lg sm:text-xl md:text-4xl font-black text-white hover:text-[#e599a7] transition-all px-2"
+            >
+              <Mail size={24} className="md:w-10 md:h-10 shrink-0" />
+              <span className="truncate md:whitespace-normal">{contactInfo.email}</span>
             </a>
             
             {contactInfo.phone && (
-              <a href={`tel:${contactInfo.phone}`} className="flex items-center justify-center gap-3 text-xl md:text-2xl font-bold text-white hover:text-[#e599a7] transition-all">
-                <Phone size={24} className="md:w-7 md:h-7" />
+              <a 
+                href={`tel:${contactInfo.phone}`} 
+                className="flex items-center justify-center gap-2 md:gap-3 text-lg md:text-2xl font-bold text-white hover:text-[#e599a7] transition-all"
+              >
+                <Phone size={20} className="md:w-7 md:h-7 shrink-0" />
                 <span>{contactInfo.phone}</span>
               </a>
             )}
           </div>
 
-          <div className="flex items-center justify-center gap-6 pt-8 border-t border-slate-800">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-8 border-t border-slate-800">
             {contactInfo.instagramUrl && (
               <a href={contactInfo.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-[#e599a7] transition-all group">
-                <Instagram size={24} className="group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-bold">{contactInfo.instagram}</span>
+                <Instagram size={20} className="group-hover:scale-110 transition-transform md:w-6 md:h-6" />
+                <span className="text-xs md:text-sm font-bold">{contactInfo.instagram}</span>
               </a>
             )}
             
             {contactInfo.tiktokUrl && (
               <a href={contactInfo.tiktokUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-[#e599a7] transition-all group">
-                <Send size={24} className="group-hover:scale-110 transition-transform" />
-                <span className="text-sm font-bold">{contactInfo.tiktok}</span>
+                <Send size={20} className="group-hover:scale-110 transition-transform md:w-6 md:h-6" />
+                <span className="text-xs md:text-sm font-bold">{contactInfo.tiktok}</span>
               </a>
             )}
           </div>

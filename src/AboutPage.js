@@ -8,7 +8,8 @@ import {
   Instagram,
   MessageCircle,
   Mail,
-  Phone
+  Phone,
+  Send // Added Send icon for the footer
 } from 'lucide-react';
 import { aboutMe, contactInfo } from './data';
 import ElenaPhoto from './photos/AboutMePhotoLenaLittleExperiences.jpeg';
@@ -38,7 +39,6 @@ const AboutPage = ({ setView }) => {
       <main className="max-w-6xl mx-auto px-6 py-8 md:py-12">
         {/* Hero Section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:items-start mb-24">
-          {/* Text Content with Staggered Entrance */}
           <div className="order-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 text-[#e599a7] rounded-full text-xs font-bold animate-in fade-in slide-in-from-left duration-500 fill-mode-both">
               <Sparkles size={14} className="animate-spin-slow" />
@@ -53,7 +53,6 @@ const AboutPage = ({ setView }) => {
               {aboutMe.bio}
             </p>
 
-            {/* Contact Info Cards with Hover Lift */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 animate-in fade-in slide-in-from-bottom duration-700 delay-500 fill-mode-both">
               <a
                 href={`mailto:${contactInfo.email}`}
@@ -83,34 +82,12 @@ const AboutPage = ({ setView }) => {
             </div>
           </div>
 
-          {/* THE PHOTO: Ultra-Smooth Hover & Floating Animation */}
           <div className="order-2 relative flex justify-center animate-in fade-in zoom-in duration-1000 delay-300 fill-mode-both">
-            {/* Background Magic Glows */}
             <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#fbbf24] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
             <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-[#e599a7] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
             <div
-              className="
-                relative
-                aspect-[3/4] sm:aspect-[4/5]
-                max-w-[280px] sm:max-w-[360px] lg:max-w-none
-                bg-white p-3
-                rounded-[3rem]
-                shadow-2xl
-                lg:rotate-3
-                
-                /* HOVER ANIMATIONS */
-                hover:rotate-0 
-                hover:scale-[1.05] 
-                hover:shadow-[0_20px_50px_rgba(229,153,167,0.3)]
-                
-                transition-all 
-                duration-700 
-                ease-out
-                cursor-pointer
-                animate-float
-                group
-              "
+              className="relative aspect-[3/4] sm:aspect-[4/5] max-w-[280px] sm:max-w-[360px] lg:max-w-none bg-white p-3 rounded-[3rem] shadow-2xl lg:rotate-3 hover:rotate-0 hover:scale-[1.05] hover:shadow-[0_20px_50px_rgba(229,153,167,0.3)] transition-all duration-700 ease-out cursor-pointer animate-float group"
             >
               <div className="overflow-hidden rounded-[2.5rem] w-full h-full">
                 <img
@@ -119,8 +96,6 @@ const AboutPage = ({ setView }) => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              
-              {/* Floating Heart Badge */}
               <div className="absolute -bottom-4 -right-4 bg-[#e599a7] p-4 rounded-2xl shadow-lg rotate-12 transition-all duration-500 group-hover:rotate-0 group-hover:scale-110 group-hover:bg-[#fbbf24]">
                 <Heart className="text-white fill-white" size={24} />
               </div>
@@ -128,7 +103,7 @@ const AboutPage = ({ setView }) => {
           </div>
         </section>
 
-        {/* Approach Cards with Hover Tilt */}
+        {/* Approach Cards */}
         <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {aboutMe.approach.map((item, index) => (
@@ -148,7 +123,7 @@ const AboutPage = ({ setView }) => {
           </div>
         </section>
 
-        {/* Story Section - High Contrast Reveal */}
+        {/* Story Section */}
         <section className="bg-[#2d3748] rounded-[3rem] md:rounded-[4rem] p-8 md:p-20 mb-24 text-white relative overflow-hidden shadow-2xl group transition-all duration-700 hover:shadow-pink-200/20">
           <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:rotate-12 transition-transform duration-1000">
              <Sparkles size={120} />
@@ -172,32 +147,53 @@ const AboutPage = ({ setView }) => {
             </div>
           </div>
         </section>
-
-        {/* Socials with Bounce Effect */}
-        <div className="flex flex-col items-center gap-6 mb-24">
-          <p className="text-xs font-black uppercase tracking-widest text-slate-400">Follow the Magic</p>
-          <div className="flex gap-4">
-            <a
-              href={contactInfo.instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 bg-white px-8 py-5 rounded-2xl shadow-sm font-bold hover:text-[#e599a7] hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300"
-            >
-              <Instagram size={20} /> Instagram
-            </a>
-            <a
-              href={contactInfo.tiktokUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-3 bg-white px-8 py-5 rounded-2xl shadow-sm font-bold hover:text-[#e599a7] hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300"
-            >
-              <MessageCircle size={20} /> TikTok
-            </a>
-          </div>
-        </div>
       </main>
 
-      {/* CUSTOM KEYFRAME ANIMATIONS */}
+      {/* MOBILE-OPTIMIZED FOOTER (Same as Booking Flow) */}
+      <footer className="bg-slate-900 px-4 md:px-6 py-12 md:py-20 text-center">
+        <div className="max-w-2xl mx-auto border-t border-slate-800 pt-8 md:pt-12">
+          <p className="text-slate-500 font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[9px] md:text-[10px] mb-6 md:mb-8">
+            Ready for the best day ever?
+          </p>
+          
+          <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
+            <a 
+              href={`mailto:${contactInfo.email}`} 
+              className="flex items-center justify-center gap-2 md:gap-3 text-lg sm:text-xl md:text-4xl font-black text-white hover:text-[#e599a7] transition-all px-2"
+            >
+              <Mail size={24} className="md:w-10 md:h-10 shrink-0" />
+              <span className="truncate md:whitespace-normal">{contactInfo.email}</span>
+            </a>
+            
+            {contactInfo.phone && (
+              <a 
+                href={`tel:${contactInfo.phone}`} 
+                className="flex items-center justify-center gap-2 md:gap-3 text-lg md:text-2xl font-bold text-white hover:text-[#e599a7] transition-all"
+              >
+                <Phone size={20} className="md:w-7 md:h-7 shrink-0" />
+                <span>{contactInfo.phone}</span>
+              </a>
+            )}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-8 border-t border-slate-800">
+            {contactInfo.instagramUrl && (
+              <a href={contactInfo.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-[#e599a7] transition-all group">
+                <Instagram size={20} className="group-hover:scale-110 transition-transform md:w-6 md:h-6" />
+                <span className="text-xs md:text-sm font-bold">{contactInfo.instagram}</span>
+              </a>
+            )}
+            
+            {contactInfo.tiktokUrl && (
+              <a href={contactInfo.tiktokUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-[#e599a7] transition-all group">
+                <Send size={20} className="group-hover:scale-110 transition-transform md:w-6 md:h-6" />
+                <span className="text-xs md:text-sm font-bold">{contactInfo.tiktok}</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </footer>
+
       <style jsx global>{`
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(3deg); }

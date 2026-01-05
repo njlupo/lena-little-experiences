@@ -182,9 +182,7 @@ export const aboutMe = {
   qualifications: [
     "M.S. in Business Analytics",
     "B.S. in Biomedical Engineering",
-    "CPR & First Aid Certified",
-    "Background Checked & Fully Insured",
-    "10+ Years Childcare Experience"
+    "Strong background in child development and activity planning",
   ],
   approach: [
     { title: "Precision Planning", desc: "Every minute is mapped out to ensure engagement never dips and energy stays high." },
