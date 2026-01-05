@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/lena-little-experiences/static/css/main.1d1c42ca.css",
-    "main.js": "/lena-little-experiences/static/js/main.5dc5aa2e.js",
+    "main.css": "/lena-little-experiences/static/css/main.6600e70d.css",
+    "main.js": "/lena-little-experiences/static/js/main.47a17cf0.js",
     "static/js/453.3af43283.chunk.js": "/lena-little-experiences/static/js/453.3af43283.chunk.js",
     "static/media/logo.png": "/lena-little-experiences/static/media/logo.183cff32f21e137ec450.png",
     "index.html": "/lena-little-experiences/index.html",
-    "main.1d1c42ca.css.map": "/lena-little-experiences/static/css/main.1d1c42ca.css.map",
-    "main.5dc5aa2e.js.map": "/lena-little-experiences/static/js/main.5dc5aa2e.js.map",
+    "main.6600e70d.css.map": "/lena-little-experiences/static/css/main.6600e70d.css.map",
+    "main.47a17cf0.js.map": "/lena-little-experiences/static/js/main.47a17cf0.js.map",
     "453.3af43283.chunk.js.map": "/lena-little-experiences/static/js/453.3af43283.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d1c42ca.css",
-    "static/js/main.5dc5aa2e.js"
+    "static/css/main.6600e70d.css",
+    "static/js/main.47a17cf0.js"
   ]
 }
