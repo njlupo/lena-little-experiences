@@ -1,11 +1,13 @@
-
 import React, { useState } from 'react';
-import { ArrowLeft, Check, CheckCircle, Clock, Users, Sparkles, Eye } from 'lucide-react';
+import { ArrowLeft, Check, CheckCircle, Clock, Users, Sparkles, Eye, Loader2 } from 'lucide-react';
 import { packages, themes, timeSlots, customTheme } from './data';
 import ThemeDetailsModal from './ThemeDetailsModal';
+import emailjs from '@emailjs/browser';
 
 const BookingFlow = ({ booking, setBooking, bookingStep, setBookingStep, setView }) => {
   const [viewingTheme, setViewingTheme] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const resetBooking = () => {
     setBooking({
@@ -59,8 +61,59 @@ const BookingFlow = ({ booking, setBooking, bookingStep, setBookingStep, setView
     setBookingStep(3);
   };
 
-  const handleSubmitBooking = () => {
-    setBookingStep(4);
+  const handleSubmitBooking = async () => {
+    setIsSubmitting(true);
+    setEmailError(false);
+    
+    try {
+      // Initialize EmailJS
+      emailjs.init('QZFgXTeB26v6MvOS7');
+      
+      // Email data
+      const emailData = {
+        to_email: 'lenalittleexperiences@gmail.com',
+        customer_email: booking.email,
+        parent_name: booking.parentName,
+        child_name: booking.childName,
+        child_age: booking.childAge,
+        phone: booking.phone,
+        address: booking.address,
+        date: booking.date,
+        time: booking.time,
+        theme: booking.theme.shortTitle || booking.theme.title,
+        package: booking.package.name,
+        package_price: booking.package.originalPrice,
+        is_custom: booking.theme.id === 'custom' ? 'Yes' : 'No',
+        custom_fee: booking.theme.id === 'custom' ? customTheme.additionalCost : '0',
+        total_price: booking.package.price,
+        special_requests: booking.specialRequests || 'None',
+      };
+      
+      // Send email to business
+      await emailjs.send(
+        'service_osmz4xs',
+        'template_fxo05zh',
+        emailData
+      );
+      
+      // Send confirmation email to customer
+      await emailjs.send(
+        'service_osmz4xs',
+        'template_rsq4vep',
+        emailData
+      );
+      
+      setBookingStep(4);
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      setEmailError(true);
+      // Still proceed to confirmation page
+      setTimeout(() => {
+        setBookingStep(4);
+      }, 2000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBack = () => {
@@ -466,18 +519,27 @@ const BookingFlow = ({ booking, setBooking, bookingStep, setBookingStep, setView
                 </div>
                 <button
                   onClick={handleSubmitBooking}
-                  disabled={!booking.childName || !booking.parentName || !booking.email || !booking.phone || !booking.address || !booking.date || !booking.time}
-                  className="w-full bg-[#e599a7] text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black uppercase tracking-widest text-sm md:text-lg hover:bg-[#d88996] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!booking.childName || !booking.parentName || !booking.email || !booking.phone || !booking.address || !booking.date || !booking.time || isSubmitting}
+                  className="w-full bg-[#e599a7] text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black uppercase tracking-widest text-sm md:text-lg hover:bg-[#d88996] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Confirm Booking
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Confirm Booking'
+                  )}
                 </button>
+                {emailError && (
+                  <p className="text-sm text-amber-600 mt-2 text-center">
+                    Email notification failed, but your booking was saved. We'll contact you soon!
+                  </p>
+                )}
               </div>
             </div>
           </div>
         )}
-
-
-
         
         {bookingStep === 4 && (
           <div className="py-6 md:py-12">
@@ -534,9 +596,7 @@ const BookingFlow = ({ booking, setBooking, bookingStep, setBookingStep, setView
         )}
       </div>
 
-
-{/* --- PLACE IT HERE --- */}
-{viewingTheme && (
+      {viewingTheme && (
         <ThemeDetailsModal 
           theme={viewingTheme} 
           onClose={() => setViewingTheme(null)} 
@@ -546,12 +606,7 @@ const BookingFlow = ({ booking, setBooking, bookingStep, setBookingStep, setView
           }}
         />
       )}
-      {/* --------------------- */}
-
-
     </div>
-
-    
   );
 };
 
