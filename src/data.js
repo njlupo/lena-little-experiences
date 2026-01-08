@@ -1,4 +1,8 @@
-import { Sparkles, Palette, FlaskConical, Crown, Users, Clock, Utensils, Rocket, Shield, PawPrint, Drama, Sun, Baby, Wand2 } from 'lucide-react';
+import { 
+  Sparkles, Palette, FlaskConical, Crown, Users, Clock, 
+  Utensils, Rocket, Shield, PawPrint, Drama, Sun, 
+  Baby, Wand2, Trophy 
+} from 'lucide-react';
 
 export const packages = [
   { 
@@ -162,6 +166,14 @@ export const themes = [
     slogan: "Outdoor fun without planning stress", 
     desc: "Seasonal favorite with water games, chalk art, sports challenges, and refreshing activities!",
     activities: ["Water games or bubble stations", "Chalk art", "Mini sports challenges", "Popsicle craft", "Summer memories"]
+  },
+  { 
+    id: 'sport',
+    title: "Little Athletes Sports Party",  
+    icon: Trophy, 
+    slogan: "Active fun that turns your home into a mini sports arena",
+    desc: "A high-energy, confidence-building party focused on movement, teamwork, and fun through age-appropriate sports activities! Can be customized to focus on one sport or a multi-sport experience.",
+    activities: ["Design your team logo", "Create your own team mascot", "Mini sports stations", "Skill-building games", "Decorate a sports medal (team celebration at end)"]
   }
 ];
 
@@ -169,10 +181,9 @@ export const timeSlots = [
   "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
 ];
 
-
 export const aboutMe = {
   name: "Elena",
-  title: "Founder & Lead Experience Architect", // Changed from Creator to Architect
+  title: "Founder & Lead Experience Architect",
   bio: "I believe every childhood milestone deserves both a dreamer's imagination and an engineer’s precision. With a background in Biomedical Engineering and Business Analytics, I’ve traded lab reports for lesson plans—combining data-driven organization with a lifelong passion for childcare to create 'Little Experiences' that are as seamless for parents as they are magical for kids.",
   story: [
     "You might be wondering how my academic background led me to this work. After completing my master’s degree last May, I spent the summer nannying while exploring opportunities in my field. During that time, I realized that my passion for working with children had only continued to grow.",
@@ -192,8 +203,6 @@ export const aboutMe = {
   image:'./photos/AboutMePhotoLenaLittleExperiences.jpeg',
 };
 
-
-
 export const contactInfo = {
   email: "lenalittleexperiences@gmail.com",
   phone: "617-820-9611",
@@ -202,4 +211,3 @@ export const contactInfo = {
   instagramUrl: "https://www.instagram.com/lenalittleexperiences?igsh=MWh0aGRrOTVjbGVlMg%3D%3D&utm_source=qr",
   tiktokUrl: "https://www.tiktok.com/@lenalittleexperiences?_r=1&_t=ZP-92p2B25f8d5"
 };
-
